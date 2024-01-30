@@ -5,15 +5,15 @@ FROM gradle:7.3.3-jdk11 AS build
 WORKDIR /app
 
 # Copy only the build files needed for dependency resolution
-COPY build.gradle settings.gradle ./
+COPY Spring-Boot-App/build.gradle Spring-Boot-App/settings.gradle ./
 
 # Download and resolve dependencies using the Gradle Wrapper
-COPY gradlew .
-COPY gradle gradle
+COPY Spring-Boot-App/gradlew .
+COPY Spring-Boot-App/gradle Spring-Boot-App/gradle
 RUN ./gradlew dependencies
 
 # Copy the rest of the source code
-COPY . .
+COPY Spring-Boot-App/src src
 
 # Build the application using the Gradle Wrapper
 RUN ./gradlew build --stacktrace
@@ -25,7 +25,7 @@ FROM adoptopenjdk:11-jre-hotspot
 WORKDIR /app
 
 # Copy the JAR file from the build stage
-COPY --from=build /app/build/libs/demo-0.0.1-SNAPSHOT.jar app.jar
+COPY --from=build /app/Spring-Boot-App/build/libs/demo-0.0.1-SNAPSHOT.jar app.jar
 
 # Expose the port your app runs on
 EXPOSE 8080
