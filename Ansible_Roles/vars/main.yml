@@ -1,0 +1,8 @@
+---
+# vars file for ec2_roles
+
+# Ansible_Roles/vars/main.yml
+
+
+
+instance_id: "{{ lookup('file', 'terraform_outputs.yml') | from_yaml }}"
