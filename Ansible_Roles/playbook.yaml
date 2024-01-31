@@ -1,8 +1,0 @@
----
-
-- name: playbook 
-  hosts: ivolve
-
-  roles:
-
-    - ec2_roles
