@@ -1,5 +1,7 @@
-# Introduction
-This project serves as a comprehensive guide to a }loud DevOps workflow. Leveraging Terraform for infrastructure provisioning, Ansible for configuration management, Docker for containerization, this project aims to showcase best practices for cloud-native development and deployment.
+#The project is on the dev Branch
+
+## Introduction
+This project serves as a comprehensive guide to a Cloud DevOps workflow. Leveraging Terraform for infrastructure provisioning, Ansible for configuration management, Docker for containerization, this project aims to showcase best practices for cloud-native development and deployment.
 
 ### 1. Terraform Setup
 #### Customize Variables
