@@ -18,6 +18,14 @@ dependencies {
     testImplementation('org.springframework.boot:spring-boot-starter-test')
 }
 
+sonarqube {
+    properties {
+        property 'sonar.host.url', '<http://your-sonarqube-server-url>'
+        property 'sonar.login', '<your-sonarqube-token>'
+        property 'sonar.sourceEncoding', 'UTF-8'
+    }
+}
+
 test {
     useJUnitPlatform()
 }

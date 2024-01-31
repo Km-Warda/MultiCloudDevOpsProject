@@ -60,6 +60,41 @@ docker run -p 8080:8080 <your-image-name>
 ```
 The given docker file will create the docker image for the application in the ./Spring-Boot-App
 
-## The Architecture
+### Jenkins CICD Pipeline
+The pipeline makes use of the docker file to create an image & run a container, then deploys it to the OpenShift cluster. The pipeline stages consist of:
+- Building an image
+- Pushing the image to the Docker Hub repository
+- Unit testing to insure integrity of the code
+- SonarQube analysis to insure the quality of the code
+- Deploying the app to the OpenShift Cluster
+
+#### Important steps before running the pipeline
+1. Add the Docker Hub credentials in the Jenkins credentials, make sure to use the id as "docker-creds"
+2. Make sure to add the GitHub credentials correctly & change the repository if required.
+3. Add the OpenShift cluster credentials in your secrets file to contain your project credentials.
+4. Configure the SonarQube
+#### Configuring the SonarQube
+1. **Install SonarQube Server:**
+- Ensure you have SonarQube installed and running.
+- Configure your SonarQube server, and obtain the authentication token for Jenkins to use.
+2. **Install SonarQube Scanner:**
+- Install the SonarQube Scanner on your Jenkins server. You can download it from the official website.
+- Follow the installation instructions provided for your operating system.
+3. **Configure SonarQube in Jenkins:**
+- In Jenkins, go to "Manage Jenkins" -> "Manage Plugins" -> "Available" and install the "SonarQube Scanner" plugin.
+- After installation, go to "Manage Jenkins" -> "Global Tool Configuration" and configure the SonarQube Scanner.
+4. **Configure SonarQube in Your Project:**
+- In the "././Spring-Boot-App/build.gradle" file, change the "URL" and the "Token"
+```
+sonarqube {
+    properties {
+        property 'sonar.host.url', '<http://your-sonarqube-server-url>'
+        property 'sonar.login', '<your-sonarqube-token>'
+        property 'sonar.sourceEncoding', 'UTF-8'
+    }
+}
+```
+
+## The Final Architecture
 - The architecture consists of one VPC, one public subnet, one EC2 with security group of SSH port allowed, applying the concept of IaC modules.
 - The application is deployed to an OpenShift cluster, & it has centralized logging on OpenShift for container logs.
