@@ -1,0 +1,15 @@
+---
+
+services:
+
+  - git
+
+  - docker
+
+  - java
+
+  - jenkins
+
+  - sonarqube
+
+  
