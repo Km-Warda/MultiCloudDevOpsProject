@@ -10,6 +10,5 @@ variable "instance_type" {
   default = "t2.micro"
 }
 variable "instance_tags" {
-    type = string
-    default = "ec2-instance"
+    type = map(string)
 }

@@ -9,16 +9,6 @@ variable "sg_ingress_rule" {
   protocol    = string
   cidr_blocks = list(string)
   }))
-  description = "ingress rules for security group"
-  default     = {
-    example_rule = {
-      from_port   = 22
-      to_port     = 22
-      protocol    = "tcp"
-      cidr_blocks = ["0.0.0.0/0"]
-    }
-    # Add more rules if needed
-  }
 }
 
 variable "sg_egress_rule" {
@@ -28,19 +18,8 @@ variable "sg_egress_rule" {
   protocol    = string
   cidr_blocks = list(string)
   }))
-  description = "Egress rules for security group"
-  default     = {
-    example_rule = {
-      from_port   = 0
-      to_port     = 0
-      protocol    = "-1"
-      cidr_blocks = ["0.0.0.0/0"]
-    }
-    # Add more rules if needed
-  }
 }
 
 variable "sg_tags" {
-    type = string
-    default = "security_group"
+    type = map(string)
 }

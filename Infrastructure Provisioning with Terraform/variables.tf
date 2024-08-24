@@ -12,8 +12,11 @@ variable "primary_vpc_dns_hostnames" {
     default = true
 }
 variable "primary_vpc_tags" {
-    type = string
-    default = "Main_VPC"
+  type = map(string)
+  default = {
+    Name = "Main_VPC"
+    # Add More
+  }
 }
 
 
@@ -27,8 +30,11 @@ variable "primary_availability_zone" {
     default = "us-west-2a"
 }
 variable "primary_public_subnet_tags" {
-    type = string
-    default = "Main_Public_Subnet"
+  type = map(string)
+  default = {
+    Name = "Main_Public_Subnet"
+    # Add More
+  }
 }
 
 
@@ -68,9 +74,12 @@ variable "custom_sg_egress_rule" {
   }
 }
 
-variable "primary__sg_tags" {
-    type = string
-    default = "Main_security_group"
+variable "primary_sg_tags" {
+  type = map(string)
+  default = {
+    Name = "Main_security_group"
+    # Add More
+  }
 }
 
 
@@ -84,6 +93,9 @@ variable "primary_instance_type" {
   default = "t2.micro"
 }
 variable "primary_instance_tags" {
-    type = string
-    default = "Main_EC2_Instance"
+  type = map(string)
+  default = {
+    Name = "Main_EC2_Instance"
+    # Add More
+  }
 }
