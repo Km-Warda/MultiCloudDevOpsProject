@@ -4,11 +4,9 @@ variable "vpc_id" {}
 
 variable "subnet_cidr_block" {
     type = string
-    default = "10.0.1.0/24"
 }
 variable "availability_zone" {
     type = string
-    default = "us-west-2a"
 }
 variable "subnet_tags" {
     type = map(string)
@@ -17,5 +15,4 @@ variable "subnet_tags" {
 # True for public subnet creation, False for private subnet creation
 variable "public_subnet_enable" {
   type = bool
-  default = true
 }
